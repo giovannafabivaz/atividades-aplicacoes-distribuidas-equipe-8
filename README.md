@@ -1,5 +1,5 @@
 # atividades-aplicacoes-distribuidas-equipe-8
----
+
 # 01 - Java Thread
 
 Este projeto contém exercícios sobre o uso de Threads em Java. 

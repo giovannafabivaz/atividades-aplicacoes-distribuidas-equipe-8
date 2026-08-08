@@ -1,7 +1,5 @@
 # Desenvolvimento de Aplicações Distribuídas
 
-Bem-vindo(a) ao repositório da disciplina de **Desenvolvimento de Aplicações Distribuídas**.
-
 ## Integrantes do Grupo
 * Giovanna Fabíola Vaz
 * Kaio César dos Santos Vidigal
@@ -9,16 +7,19 @@ Bem-vindo(a) ao repositório da disciplina de **Desenvolvimento de Aplicações 
 * Mateus de Carvalho Freitas
 * Paulo Henrique Xavier
 
-  
 Este repositório foi criado para armazenar, versionar e organizar todos os códigos, listas de exercícios e projetos práticos desenvolvidos ao longo da disciplina de Desenvolvimento de Aplicações Distribuídas. 
 
 Conforme o andamento das aulas e a entrega de novas atividades pelo professor, o repositório será atualizado com novas pastas, mantendo o histórico de evolução do nosso aprendizado.
+
+--- 
 
 ## 📂 Estrutura do Repositório
 A organização se dará por meio de diretórios nomeados de acordo com o tema ou número da lista de exercícios. 
 
 * 📁 **`01-java-thread-main/`**: Contém a primeira lista de exercícios focada em concorrência utilizando Threads em Java (abrange problemas como calculadora paralela, jogo de adivinhação, soma de matrizes e vetores).
 * 📁 *...*
+
+---
 
 ## Como Executar os Projetos
 Cada diretório de atividade possui o seu próprio arquivo `README.md` interno com instruções detalhadas e específicas para rodar os códigos daquela lista. 

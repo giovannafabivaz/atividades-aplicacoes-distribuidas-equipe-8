@@ -15,9 +15,10 @@ Conforme o andamento das aulas e a entrega de novas atividades pelo professor, o
 
 ## 📂 Estrutura do Repositório
 A organização se dará por meio de diretórios nomeados de acordo com o tema ou número da lista de exercícios. 
-
-* 📁 **`01-java-thread-main/`**: Contém a primeira lista de exercícios focada em concorrência utilizando Threads em Java (abrange problemas como calculadora paralela, jogo de adivinhação, soma de matrizes e vetores).
-* 📁 *...*
+* 📁 **`Listas`**:
+  * 📁 **`01-java-thread-main/`**: Contém a primeira lista de exercícios focada em concorrência utilizando Threads em Java (abrange problemas como calculadora paralela, jogo de adivinhação, soma de matrizes e vetores).
+  * 📁 **`02-java-thread-main/`**: Contém a segunda lista de exercícios.
+  * 📁 **`01-react-native/my-app`**: Contém a primeira lista de exercícios focada em React Native.
 
 ---
 

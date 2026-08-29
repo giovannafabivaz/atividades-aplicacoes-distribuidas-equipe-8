@@ -1,0 +1,34 @@
+EXERCÍCIO 1 – APLICAÇÃO DISTRIBUÍDA CLIENTE-SERVIDOR COM FIFO
+
+A aplicação é formada por um único processo servidor e por diversos processos clientes. Cada processo cliente é criado por um usuário quando existe uma requisição a ser realizada. O servidor permanece em execução aguardando as requisições dos clientes.
+
+A comunicação entre os processos é realizada por meio de FIFO (First In, First Out), também conhecido como named pipe. O servidor possui um FIFO principal para receber as requisições. Cada cliente deve escrever nesse FIFO uma mensagem contendo, por exemplo, seu identificador, a operação solicitada e os respectivos parâmetros.
+
+Depois de escrever a requisição no FIFO, o processo cliente não continua como se a operação já tivesse sido concluída. Ele fica aguardando a resposta do servidor. Para que o servidor consiga responder ao cliente correto, cada cliente pode criar ou utilizar um FIFO de resposta próprio. O nome ou identificador desse FIFO deve ser informado junto com a requisição.
+
+O servidor lê as requisições no FIFO principal, interpreta cada mensagem e executa a operação solicitada. Após concluir o processamento, ele grava o resultado no FIFO de resposta correspondente ao cliente que enviou a requisição. O cliente permanece bloqueado aguardando essa resposta; quando a recebe, apresenta o resultado ao usuário e pode encerrar ou realizar uma nova requisição.
+
+O fluxo geral da comunicação é o seguinte:
+
+1. O usuário cria ou inicia um processo cliente.
+2. O cliente prepara uma requisição com seu identificador, a operação e os dados necessários.
+3. O cliente escreve a requisição no FIFO compartilhado de requisições.
+4. O cliente abre ou aguarda seu FIFO individual de resposta.
+5. O servidor lê a requisição no FIFO compartilhado.
+6. O servidor processa a operação solicitada.
+7. O servidor escreve a resposta no FIFO de resposta do cliente correspondente.
+8. O cliente lê a resposta e a apresenta ao usuário.
+
+A arquitetura pode ser representada da seguinte forma:
+
+USUÁRIO 1 -> PROCESSO CLIENTE 1 -- requisição --> FIFO DE REQUISIÇÕES --\
+USUÁRIO 2 -> PROCESSO CLIENTE 2 -- requisição --> FIFO DE REQUISIÇÕES ----> PROCESSO SERVIDOR
+USUÁRIO 3 -> PROCESSO CLIENTE 3 -- requisição --> FIFO DE REQUISIÇÕES --/
+
+PROCESSO SERVIDOR -- resposta --> FIFO DE RESPOSTA DO CLIENTE 1 --> PROCESSO CLIENTE 1
+PROCESSO SERVIDOR -- resposta --> FIFO DE RESPOSTA DO CLIENTE 2 --> PROCESSO CLIENTE 2
+PROCESSO SERVIDOR -- resposta --> FIFO DE RESPOSTA DO CLIENTE 3 --> PROCESSO CLIENTE 3
+
+O FIFO compartilhado permite organizar as requisições na ordem em que são recebidas. Os FIFOs individuais de resposta evitam que um cliente receba a resposta destinada a outro cliente. O servidor deve validar as mensagens recebidas, tratar erros de comunicação e continuar atendendo novos clientes enquanto estiver em execução.
+
+Portanto, a responsabilidade do cliente é enviar uma requisição e aguardar sua resposta, enquanto a responsabilidade do servidor é receber as requisições, processá-las e devolver cada resultado ao cliente correto. O FIFO funciona como o mecanismo de comunicação entre os processos, sem que seja necessário que os processos compartilhem a mesma memória.

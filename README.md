@@ -44,4 +44,10 @@ java Main
 ```bash
 
 git add . && git commit -m "teste" && git push
+
+```
+```bash
+
+git pull --no-rebase origin main
+
 ```

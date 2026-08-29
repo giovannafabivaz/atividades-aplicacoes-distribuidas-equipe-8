@@ -6,7 +6,7 @@ public class Consumidor {
 
         long inicio = System.currentTimeMillis();
 
-        // Exemplo de tarefas
+        
         Thread[] tarefas = new Thread[8];
 
         for (int i = 0; i < tarefas.length; i++) {
@@ -17,7 +17,7 @@ public class Consumidor {
                 try {
                     System.out.println("Executando tarefa " + numeroTarefa);
 
-                    // Simula o tempo de execução da tarefa
+            
                     Thread.sleep(1000);
 
                     System.out.println("Tarefa " + numeroTarefa + " concluída.");
@@ -30,12 +30,12 @@ public class Consumidor {
             tarefas[i].start();
         }
 
-        // Aguarda todas as tarefas terminarem
+       
         for (Thread tarefa : tarefas) {
             try {
                 tarefa.join();
 
-                // Só incrementa se o join() terminar com sucesso
+                
                 tarefasExecutadas++;
 
             } catch (InterruptedException e) {

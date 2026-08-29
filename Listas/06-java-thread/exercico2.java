@@ -19,7 +19,7 @@ public class Consumidor {
 
             int quantidadeThreads = 0;
 
-            // Cria até MAX_THREAD threads
+            
             while (quantidadeThreads < MAX_THREAD && tarefaAtual < totalTarefas) {
 
                 final int numeroTarefa = tarefaAtual + 1;
@@ -32,7 +32,7 @@ public class Consumidor {
                             " com " + MAX_THREAD + " threads."
                         );
 
-                        // Simula o trabalho da tarefa
+                        
                         Thread.sleep(1000);
 
                         System.out.println(
@@ -50,7 +50,7 @@ public class Consumidor {
                 tarefaAtual++;
             }
 
-            // Espera as threads terminarem
+          
             for (int i = 0; i < quantidadeThreads; i++) {
 
                 try {
@@ -92,7 +92,7 @@ public class Main {
         System.out.printf("Teste com 4 threads: %.2f segundos%n", tempo4);
         System.out.printf("Teste com 6 threads: %.2f segundos%n", tempo6);
 
-        // Descobre qual foi mais rápida
+        
         double menorTempo = tempo2;
         int melhorConfiguracao = 2;
 

@@ -39,3 +39,9 @@ java Main
 
 ---
 *Repositório mantido para fins acadêmicos.*
+
+
+```bash
+
+git add . && git commit -m "teste" && git push
+```

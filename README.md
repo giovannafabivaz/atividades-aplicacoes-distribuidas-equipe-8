@@ -96,6 +96,7 @@ O atributo `tarefasExecutadas` registra as tarefas concluídas com sucesso, util
 Além disso, foram realizados testes utilizando diferentes quantidades de Threads: **2, 4 e 6**. O tempo de execução de cada configuração foi medido e comparado, permitindo identificar automaticamente qual configuração apresentou o melhor desempenho.
 
 Dessa forma, o exercício demonstra como a quantidade de Threads pode influenciar o tempo de processamento de um conjunto de tarefas.
+
 ---
 
 ## Conclusão

@@ -87,6 +87,17 @@ Assim, diferentes partes da matriz poderiam ser processadas simultaneamente, tor
 
 ---
 
+## 6. Contabilização e Pool de Threads
+
+Neste exercício, a classe `Consumidor` foi modificada para contabilizar as tarefas executadas e permitir configurar a quantidade máxima de Threads.
+
+O atributo `tarefasExecutadas` registra as tarefas concluídas com sucesso, utilizando `join()` para aguardar o término de cada Thread. Também foi utilizado `System.currentTimeMillis()` para calcular o tempo total de execução.
+
+Além disso, foram realizados testes utilizando diferentes quantidades de Threads: **2, 4 e 6**. O tempo de execução de cada configuração foi medido e comparado, permitindo identificar automaticamente qual configuração apresentou o melhor desempenho.
+
+Dessa forma, o exercício demonstra como a quantidade de Threads pode influenciar o tempo de processamento de um conjunto de tarefas.
+---
+
 ## Conclusão
 
 Os exercícios permitiram praticar o uso de Threads em Java e entender como uma tarefa pode ser executada de forma independente.

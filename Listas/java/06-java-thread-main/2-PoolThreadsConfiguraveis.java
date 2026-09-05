@@ -18,7 +18,7 @@ public class Consumidor {
         while (tarefaAtual < totalTarefas) {
 
             int quantidadeThreads = 0;
-
+https://github.com/wdiasmaciel/09-java-thread/archive/refs/heads/main.zip
             
             while (quantidadeThreads < MAX_THREAD && tarefaAtual < totalTarefas) {
 

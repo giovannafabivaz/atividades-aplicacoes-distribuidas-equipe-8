@@ -1,44 +1,32 @@
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ContaBancaria {
-    private int saldo = 0;
+    private double saldo = 100.0;
+    // O Mutex funciona como o cadeado da nossa seção crítica
+    private ReentrantLock mutex = new ReentrantLock();
 
-    // Cria o Mutex (cadeado de exclusão mútua):
-    private final ReentrantLock mutex = new ReentrantLock();
-
-    public ContaBancaria(int saldo){
-        this.saldo = saldo;
-    }
-
-    public void sacar(String nomeThread, int valor) {
-        System.out.println(nomeThread + " está tentando sacar R$" + valor);
-
-        // Tenta pegar a chave do Mutex. Se outra thread já trancou, esta espera aqui.
-        mutex.lock(); 
-        
-        try {
-            // --- INÍCIO DA REGIÃO CRÍTICA ---
-            // Apenas UMA thread por vez consegue executar este bloco de código.
-            if (saldo >= valor) {
-                System.out.println(nomeThread + " verificou o saldo: R$" + saldo);
-                
-                // Simula uma pequena demora no processamento do saque:
-                Thread.sleep(500); 
-                
-                saldo -= valor;
-                System.out.println(nomeThread + " realizou o saque! Saldo atual: R$" + saldo);
-            } else {
-                System.out.println(nomeThread + " não pôde sacar. Saldo insuficiente: R$" + saldo);
+    public void sacar(double valor, String nomeThread) {
+        // Exercício 1: Substituímos o lock() por tryLock()
+        // Se retornar true, ele conseguiu a tranca. Se false, a conta já está ocupada.
+        if (mutex.tryLock()) {
+            try {
+                System.out.println("[" + nomeThread + "] acessou a conta e iniciou o saque.");
+                if (saldo >= valor) {
+                    Thread.sleep(100); // Simulando o tempo de processamento
+                    saldo -= valor;
+                    System.out.println("[" + nomeThread + "] sacou R$" + valor + ". Saldo atual: R$" + saldo);
+                } else {
+                    System.out.println("[" + nomeThread + "] falhou: saldo insuficiente.");
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                // É obrigatório liberar a tranca no finally para não travar o sistema
+                mutex.unlock();
             }
-            // --- FIM DA REGIÃO CRÍTICA ---
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            // Obrigatoriamente destranca o Mutex no bloco 'finally'.
-            // Isso garante que a chave seja liberada mesmo se ocorrer um erro no try.
-            mutex.unlock(); 
-            System.out.println(nomeThread + " liberou o Mutex.");
+        } else {
+            // Se o tryLock deu false, a thread desiste imediatamente e imprime a mensagem exigida
+            System.out.println("[" + nomeThread + "] desistiu do saque porque a conta estava ocupada por outra operação.");
         }
     }
 }
-

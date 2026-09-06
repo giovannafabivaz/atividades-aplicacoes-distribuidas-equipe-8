@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package servico_autenticacao;
+
+// Mensagem de requisição com as credenciais informadas
+message DadosLogin {
+    string usuario = 1;
+    string senha = 2;
+}
+
+// Mensagem de resposta com o status da autenticação e feedback textual
+message RespostaLogin {
+    bool sucesso = 1;
+    string mensagem = 2;
+}
+
+// Serviço de autenticação com o procedimento remoto
+service SistemaAutenticacao {
+    rpc Autenticar (DadosLogin) returns (RespostaLogin);
+}

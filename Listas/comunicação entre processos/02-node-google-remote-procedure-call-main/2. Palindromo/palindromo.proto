@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package verificador_texto;
+
+// Requisição recebendo a palavra/frase a ser validada
+message RequisicaoTexto {
+    string texto = 1;
+}
+
+// Resposta contendo um booleano (true se for palíndromo, false se não)
+message RespostaPalindromo {
+    bool ehPalindromo = 1;
+}
+
+// Serviço expondo o procedimento remoto
+service VerificadorTexto {
+    rpc VerificarPalindromo (RequisicaoTexto) returns (RespostaPalindromo);
+}

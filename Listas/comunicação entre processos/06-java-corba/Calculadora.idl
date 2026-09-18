@@ -1,11 +1,47 @@
-// Arquivo Calculadora.idl
-
 module CalculadoraApp {
+
+  struct Produto {
+    string nome;
+    long quantidade;
+    double preco;
+  };
+
+  typedef sequence<Produto> ListaProdutos;
+
   interface Calculadora {
-    double somar(in double numero1, in double numero2);
-    double subtrair(in double numero1, in double numero2);
-    double multiplicar(in double numero1, in double numero2);
-    double dividir(in double numero1, in double numero2);
+
+    // Operações matemáticas
+    double somar(
+      in double numero1,
+      in double numero2
+    );
+
+    double subtrair(
+      in double numero1,
+      in double numero2
+    );
+
+    double multiplicar(
+      in double numero1,
+      in double numero2
+    );
+
+    double dividir(
+      in double numero1,
+      in double numero2
+    );
+
+    // Operações com produtos
+    ListaProdutos listarProdutos();
+
+    boolean alterarQuantidade(
+      in string nomeProduto,
+      in long novaQuantidade
+    );
+
+    boolean alterarPreco(
+      in string nomeProduto,
+      in double novoPreco
+    );
   };
 };
-

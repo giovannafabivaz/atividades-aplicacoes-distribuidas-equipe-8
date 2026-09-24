@@ -43,8 +43,13 @@ public class Cliente {
       double resultadoSoma = calculadora.somar(numero1, numero2);
       double resultadoSubtracao = calculadora.subtrair(numero1, numero2);
 
+      double resultadoMultiplicacao = calculadora.multiplicar(numero1, numero2);
+      double resultadoDivisao = calculadora.dividir(numero1, numero2);
+
       System.out.println("Resultado da soma: " + resultadoSoma);
       System.out.println("Resultado da subtração: " + resultadoSubtracao);
+      System.out.println("Resultado da multiplicação: " + resultadoMultiplicacao);
+      System.out.println("Resultado da divisão: " + resultadoDivisao);
       scanner.close();
     } catch (Exception e) {
       e.printStackTrace();

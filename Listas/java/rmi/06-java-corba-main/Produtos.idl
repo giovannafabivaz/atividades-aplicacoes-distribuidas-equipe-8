@@ -1,0 +1,15 @@
+module ProdutosApp {
+  struct Produto {
+    string nome;
+    long quantidade;
+    double preco;
+  };
+
+  typedef sequence<Produto> ListaProdutos;
+
+  interface Produtos {
+    ListaProdutos listarProdutos();
+    void alterarQuantidade(in string nome, in long quantidade);
+    void alterarPreco(in string nome, in double preco);
+  };
+};

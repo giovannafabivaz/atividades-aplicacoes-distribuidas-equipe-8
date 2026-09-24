@@ -1,0 +1,7 @@
+// Arquivo Cumprimentador.idl:
+
+module CumprimentadorApp {
+  interface Cumprimentador {
+    string cumprimentar();
+  };
+};

@@ -38,7 +38,7 @@ public class Coletor {
     }
 
     /*
-     * Lê URLs até que o usuário pressione Enter em uma linha vazia.
+     * Le as URLs até que o usuário pressione Enter em uma linha vazia.
      */
     private static List<String> lerUrls(Scanner teclado) {
         List<String> urls = new ArrayList<>();
@@ -66,12 +66,10 @@ public class Coletor {
     /*
      * Distribui as URLs entre exatamente cinco threads.
      *
-     * A distribuição é feita em rodízio:
+     * A distribuiçao é feita em rodizio:
      * URL 0 vai para a thread 0;
      * URL 1 vai para a thread 1;
-     * ...
-     * URL 4 vai para a thread 4;
-     * URL 5 volta para a thread 0.
+     * assim ate o fim.
      */
     private static List<TarefaDoColetor> distribuirUrlsEntreThreads(
         List<String> urls

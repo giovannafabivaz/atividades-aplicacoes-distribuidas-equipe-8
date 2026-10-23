@@ -1,0 +1,107 @@
+@baseUrl = http://localhost:8082
+@contentType = application/json
+
+### 1. Criar clientes
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Ana Silva", "email": "ana@email.com" }
+
+###
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Carlos Souza", "email": "carlos@email.com" }
+
+###
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Marta Lima", "email": "marta@email.com" }
+
+### 2. Cliente inválido (400)
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Sem Email" }
+
+### 3. Criar produtos
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{ "nome": "Notebook", "preco": 3500.00, "categoria": "Informática" }
+
+###
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{ "nome": "Mouse", "preco": 80.50, "categoria": "Informática" }
+
+###
+POST {{baseUrl}}/produtos
+Content-Type: {{contentType}}
+
+{ "nome": "Camiseta", "preco": 49.90, "categoria": "Vestuário" }
+
+### 4. Listar clientes e produtos
+GET {{baseUrl}}/clientes
+
+###
+GET {{baseUrl}}/produtos
+
+### 5. Buscar por id / inexistente (404)
+GET {{baseUrl}}/clientes/1
+
+###
+GET {{baseUrl}}/produtos/999
+
+### 6. Atualizar
+PUT {{baseUrl}}/clientes/1
+Content-Type: {{contentType}}
+
+{ "nome": "Ana Silva Souza", "email": "ana@email.com" }
+
+###
+PUT {{baseUrl}}/produtos/2
+Content-Type: {{contentType}}
+
+{ "nome": "Mouse Gamer", "preco": 120.00, "categoria": "Informática" }
+
+### 7. Registrar compras (cliente 1 -> notebook e camiseta; cliente 2 -> mouse; cliente 3 -> camiseta)
+POST {{baseUrl}}/compras
+Content-Type: {{contentType}}
+
+{ "clienteId": 1, "produtoId": 1, "quantidade": 1 }
+
+###
+POST {{baseUrl}}/compras
+Content-Type: {{contentType}}
+
+{ "clienteId": 1, "produtoId": 3, "quantidade": 2 }
+
+###
+POST {{baseUrl}}/compras
+Content-Type: {{contentType}}
+
+{ "clienteId": 2, "produtoId": 2, "quantidade": 1 }
+
+###
+POST {{baseUrl}}/compras
+Content-Type: {{contentType}}
+
+{ "clienteId": 3, "produtoId": 3, "quantidade": 1 }
+
+### 8. REQUISITO: produtos adquiridos pelo cliente 1
+GET {{baseUrl}}/clientes/1/produtos
+
+### 9. REQUISITO: categorias adquiridas por mais de n clientes (n=1 -> Informática e Vestuário têm 2 clientes cada)
+GET {{baseUrl}}/categorias?n=1
+
+###
+GET {{baseUrl}}/categorias?n=2
+
+### 10. Deletar
+DELETE {{baseUrl}}/produtos/2
+
+###
+DELETE {{baseUrl}}/clientes/3

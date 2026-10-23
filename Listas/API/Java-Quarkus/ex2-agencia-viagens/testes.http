@@ -1,0 +1,104 @@
+@baseUrl = http://localhost:8082
+@contentType = application/json
+
+### 1. Criar clientes
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Ana Silva", "email": "ana@email.com" }
+
+###
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Carlos Souza", "email": "carlos@email.com" }
+
+### 2. Cliente inválido (400)
+POST {{baseUrl}}/clientes
+Content-Type: {{contentType}}
+
+{ "nome": "Sem Email" }
+
+### 3. Criar destinos
+POST {{baseUrl}}/destinos
+Content-Type: {{contentType}}
+
+{ "nome": "Torre Eiffel", "pais": "França", "descricao": "Paris" }
+
+###
+POST {{baseUrl}}/destinos
+Content-Type: {{contentType}}
+
+{ "nome": "Museu do Louvre", "pais": "França", "descricao": "Paris" }
+
+###
+POST {{baseUrl}}/destinos
+Content-Type: {{contentType}}
+
+{ "nome": "Cristo Redentor", "pais": "Brasil", "descricao": "Rio de Janeiro" }
+
+###
+POST {{baseUrl}}/destinos
+Content-Type: {{contentType}}
+
+{ "nome": "Coliseu", "pais": "Itália", "descricao": "Roma" }
+
+### 4. Listar
+GET {{baseUrl}}/clientes
+
+###
+GET {{baseUrl}}/destinos
+
+### 5. Buscar por id / inexistente (404)
+GET {{baseUrl}}/destinos/1
+
+###
+GET {{baseUrl}}/clientes/999
+
+### 6. Atualizar
+PUT {{baseUrl}}/clientes/1
+Content-Type: {{contentType}}
+
+{ "nome": "Ana Silva Souza", "email": "ana@email.com" }
+
+###
+PUT {{baseUrl}}/destinos/4
+Content-Type: {{contentType}}
+
+{ "nome": "Coliseu de Roma", "pais": "Itália", "descricao": "Roma" }
+
+### 7. Registrar viagens
+POST {{baseUrl}}/viagens
+Content-Type: {{contentType}}
+
+{ "clienteId": 1, "destinoId": 1, "dataVisita": "2025-07-10" }
+
+###
+POST {{baseUrl}}/viagens
+Content-Type: {{contentType}}
+
+{ "clienteId": 1, "destinoId": 3, "dataVisita": "2025-12-20" }
+
+###
+POST {{baseUrl}}/viagens
+Content-Type: {{contentType}}
+
+{ "clienteId": 2, "destinoId": 1, "dataVisita": "2026-01-15" }
+
+### 8. REQUISITO: destinos visitados pelo cliente 1
+GET {{baseUrl}}/clientes/1/destinos
+
+### 9. REQUISITO: clientes que visitaram o destino 1
+GET {{baseUrl}}/destinos/1/clientes
+
+### 10. REQUISITO: destinos agrupados e ordenados por país
+GET {{baseUrl}}/destinos/por-pais
+
+### 11. REQUISITO: países com mais de n destinos (n=1 -> só a França)
+GET {{baseUrl}}/paises?n=1
+
+### 12. Deletar
+DELETE {{baseUrl}}/viagens/3
+
+###
+DELETE {{baseUrl}}/destinos/4

@@ -1,14 +1,23 @@
 # 01-java-thread
 
-## Compilação:
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
 ```bash
-javac *.java
+java -version
+javac -version
 ```
 
-## Execução:
+No terminal, a partir da raiz do repositório, compile e execute:
+
 ```bash
+cd Listas/01-Thread/01-java-thread-main
+javac *.java
 java Main
 ```
+
+O `Main` inicia as cinco tarefas simultaneamente; por isso, as mensagens podem aparecer intercaladas no console.
 
 # Exercícios:
 

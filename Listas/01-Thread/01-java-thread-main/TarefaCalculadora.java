@@ -32,11 +32,11 @@ class TarefaCalculadora implements Runnable {
 
             // Pausa de 1 segundo (1000 milissegundos) para simular trabalho
             try {
-                Thread.sleep(1000);[cite: 4]
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.out.println(nome + " foi interrompida.");[cite: 4]
+                System.out.println(nome + " foi interrompida.");
             }
         }
-        System.out.println(nome + " FINALIZADA!");[cite: 4]
+        System.out.println(nome + " FINALIZADA!");
     }
 }

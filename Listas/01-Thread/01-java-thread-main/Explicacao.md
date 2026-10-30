@@ -1,5 +1,26 @@
 # Explicação dos Exercícios
 
+## Como executar
+
+É necessário ter o JDK instalado, pois ele fornece o compilador `javac` e o comando `java`. Para conferir a instalação, execute:
+
+```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, entre na pasta do exercício, compile os arquivos e execute a classe principal:
+
+```bash
+cd Listas/01-Thread/01-java-thread-main
+javac *.java
+java Main
+```
+
+O `Main` inicia as cinco tarefas com `Thread.start()`. Por isso, os exercícios são executados ao mesmo tempo e as mensagens de cada thread podem aparecer intercaladas no console. Para executar apenas um exercício, mantenha no `Main.java` somente a chamada `start()` da thread correspondente; por exemplo, `t1.start()` inicia a calculadora.
+
+---
+
 ## 1. Thread Calculadora
 
 Neste exercício, a classe da tarefa foi modificada para receber dois números e uma operação matemática.

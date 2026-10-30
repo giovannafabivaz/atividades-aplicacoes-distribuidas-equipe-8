@@ -19,9 +19,9 @@ class TarefaSomaMatrizes implements Runnable {
                 System.out.println(nome + " - Posição [" + i + "][" + j + "]: Soma = " + soma);
             }
             try {
-                Thread.sleep(1000);[cite: 4]
+                Thread.sleep(1000);
             } catch (InterruptedException e) {}
         }
-        System.out.println(nome + " FINALIZADA!");[cite: 4]
+        System.out.println(nome + " FINALIZADA!");
     }
 }

@@ -17,9 +17,9 @@ class TarefaSomaVetores implements Runnable {
             System.out.println(nome + " - Índice [" + i + "]: " + vetorA[i] + " + " + vetorB[i] + " = " + soma);
             
             try {
-                Thread.sleep(1000);[cite: 4]
+                Thread.sleep(1000);
             } catch (InterruptedException e) {}
         }
-        System.out.println(nome + " FINALIZADA!");[cite: 4]
+        System.out.println(nome + " FINALIZADA!");
     }
 }

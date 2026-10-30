@@ -52,6 +52,8 @@ javac *.java HelloApp/*.java
 
 ---
 
+Use três terminais, todos com o JDK 8 ativado, e execute nesta ordem: servidor de nomes, aplicação e cliente. Neste exercício os nomes das classes são `HelloServer` e `HelloClient`; `Servidor` e `Cliente` são usados em outros exercícios CORBA.
+
 ### Servidor de Nomes (máquina localhost):
 
 ```bash

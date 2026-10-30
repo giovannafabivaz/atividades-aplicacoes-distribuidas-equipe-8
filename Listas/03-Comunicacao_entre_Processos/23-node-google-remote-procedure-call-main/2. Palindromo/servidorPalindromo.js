@@ -1,57 +1,39 @@
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
-import readline from 'readline';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const caminhoProto = path.join(__dirname, 'login.proto');
+const caminhoProto = path.join(__dirname, 'palindromo.proto');
 
 const definicaoPacote = protoLoader.loadSync(caminhoProto, { keepCase: true });
-const protoAutenticacao = grpc.loadPackageDefinition(definicaoPacote).servico_autenticacao;
+const protoVerificador = grpc.loadPackageDefinition(definicaoPacote).verificador_texto;
 
-// Utilitário de leitura do teclado
-function lerEntrada(pergunta) {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-
-    return new Promise((resolve) => {
-        rl.question(pergunta, (resposta) => {
-            rl.close();
-            resolve(resposta);
-        });
-    });
+function normalizarTexto(texto) {
+    return texto
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]/gu, '');
 }
 
-async function iniciarCliente() {
-    // Conecta na porta 50053
-    const cliente = new protoAutenticacao.SistemaAutenticacao('localhost:50053', grpc.credentials.createInsecure());
+function verificarPalindromo(chamada, respostaCallback) {
+    const texto = normalizarTexto(chamada.request.texto ?? '');
+    const invertido = Array.from(texto).reverse().join('');
 
-    console.log('--- TELA DE AUTENTICAÇÃO ---');
-    const usuario = await lerEntrada('Usuário: ');
-    const senha = await lerEntrada('Senha: ');
-
-    const credenciais = { usuario, senha };
-
-    console.log('\nEnviando credenciais para o servidor...');
-
-    cliente.Autenticar(credenciais, (erro, resposta) => {
-        if (erro) {
-            console.error('Falha na chamada RPC de autenticação:', erro);
-            return;
-        }
-
-        console.log('--------------------------------------------------');
-        if (resposta.sucesso) {
-            console.log(`🔓 SUCESSO: ${resposta.mensagem}`);
-        } else {
-            console.log(`🔒 FALHA: ${resposta.mensagem}`);
-        }
-        console.log('--------------------------------------------------');
-    });
+    respostaCallback(null, { ehPalindromo: texto === invertido });
 }
 
-iniciarCliente();
+const servidor = new grpc.Server();
+servidor.addService(protoVerificador.VerificadorTexto.service, {
+    VerificarPalindromo: verificarPalindromo
+});
+
+servidor.bindAsync('0.0.0.0:50052', grpc.ServerCredentials.createInsecure(), (erro, porta) => {
+    if (erro) {
+        console.error('Erro ao iniciar o servidor de palíndromo:', erro);
+        return;
+    }
+    console.log(`Servidor gRPC de palíndromo rodando na porta ${porta}`);
+});

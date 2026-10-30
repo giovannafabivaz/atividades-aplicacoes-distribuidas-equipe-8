@@ -1,5 +1,8 @@
-class ProcessadorRelatorio extends Thread {
-
+/*
+Compilar: javac ProcessadorRelatorio.java
+Executar: java ProcessadorRelatorio
+*/
+public class ProcessadorRelatorio extends Thread {
     public ProcessadorRelatorio(String nomeDepartamento) {
         this.setName(nomeDepartamento);
     }
@@ -8,7 +11,7 @@ class ProcessadorRelatorio extends Thread {
     public void run() {
         try {
             for (int pagina = 1; pagina <= 3; pagina++) {
-                System.out.println("[" + this.getName() + "] Gerando página " + pagina + "...");
+                System.out.println("[" + this.getName() + "] A gerar página " + pagina + "...");
                 Thread.sleep(500);
             }
             System.out.println("[" + this.getName() + "] Relatório finalizado!");
@@ -16,12 +19,9 @@ class ProcessadorRelatorio extends Thread {
             System.out.println("[" + this.getName() + "] Geração de relatório interrompida!");
         }
     }
-}
-
-public class Main {
 
     public static void main(String[] args) {
-        ProcessadorRelatorio threadFaturamento = new ProcessadorRelatorio("Faturamento");
+        ProcessadorRelatorio threadFaturamento = new ProcessadorRelatorio("Faturação");
         ProcessadorRelatorio threadVendas = new ProcessadorRelatorio("Vendas");
 
         threadFaturamento.start();
@@ -33,7 +33,7 @@ public class Main {
         } catch (InterruptedException e) {
             System.err.println("A thread principal foi interrompida.");
         }
-
+        
         System.out.println("\n[Sistema] Todos os relatórios foram processados com sucesso.");
     }
 }

@@ -21,7 +21,7 @@ public class Servidor {
 
       // Faz o bind do stub do objeto remoto no registry:
       Registry registry = LocateRegistry.getRegistry();
-      registry.bind("ServiçoDeCumprimentoRemoto", stub);
+      registry.rebind("ServiçoDeCumprimentoRemoto", stub);
 
       System.out.println("Servidor rodando com sucesso...");
     } catch (Exception e) {

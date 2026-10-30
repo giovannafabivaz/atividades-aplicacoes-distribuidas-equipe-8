@@ -1,5 +1,8 @@
-class Download implements Runnable {
-
+/*
+Compilar: javac Download.java
+Executar: java Download
+*/
+public class Download implements Runnable {
     private final String nome;
     private final int totalEtapas;
 
@@ -11,23 +14,17 @@ class Download implements Runnable {
     @Override
     public void run() {
         System.out.println("Iniciando download: " + this.nome + " (Total: " + this.totalEtapas + " partes)...");
-
         try {
             for (int etapa = 1; etapa <= this.totalEtapas; etapa++) {
-                System.out.println("Download [" + this.nome + "] baixando parte " + etapa + " de " + this.totalEtapas + "...");
+                System.out.println("Download [" + this.nome + "] a transferir parte " + etapa + " de " + this.totalEtapas + "...");
                 Thread.sleep(1000);
             }
-
             System.out.println("-> SUCESSO: Download [" + this.nome + "] concluído e salvo!");
-
         } catch (InterruptedException e) {
-            System.out.println("-> CRÍTICO: Download [" + this.nome + "] cancelado por timeout! Excluindo partes incompletas...");
+            System.out.println("-> CRÍTICO: Download [" + this.nome + "] cancelado por timeout! A excluir partes incompletas...");
             return;
         }
     }
-}
-
-public class Main {
 
     public static void main(String[] args) {
         Thread threadPequeno = new Thread(new Download("Arquivo_Pequeno", 2));
@@ -41,11 +38,9 @@ public class Main {
         try {
             long tempoToleranciaMs = 5000;
             Thread.sleep(tempoToleranciaMs);
-
-            System.out.println("\n[Main] Verificando downloads pendentes após 5 segundos...\n");
+            System.out.println("\n[Main] A verificar downloads pendentes após 5 segundos...\n");
 
             Thread[] downloads = { threadPequeno, threadMedio, threadGrande };
-
             for (Thread t : downloads) {
                 if (t.isAlive()) {
                     t.interrupt();
@@ -55,11 +50,9 @@ public class Main {
             threadPequeno.join();
             threadMedio.join();
             threadGrande.join();
-
         } catch (InterruptedException e) {
             System.err.println("A thread principal foi interrompida.");
         }
-
-        System.out.println("\n[Main] Gerenciador de downloads finalizado.");
+        System.out.println("\n[Main] Gestor de downloads finalizado.");
     }
 }

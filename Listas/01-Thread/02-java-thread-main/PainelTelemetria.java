@@ -1,48 +1,32 @@
-class ServicoBackup implements Runnable {
-
-    @Override
-    public void run() {
-        System.out.println("Iniciando rotina de backup...");
-
-        try {
-            for (int etapa = 1; etapa <= 5; etapa++) {
-                System.out.println("Executando etapa " + etapa + " de 5...");
-                Thread.sleep(1000);
-            }
-
-            System.out.println("-> SUCESSO: Backup concluído e salvo no servidor!");
-
-        } catch (InterruptedException e) {
-            System.out.println("-> CRÍTICO: O backup foi cancelado pelo usuário! Limpando arquivos temporários...");
-            return;
-        }
-    }
-}
-
-public class Main {
-
+/*
+Compilar: javac PainelTelemetria.java
+Executar: java PainelTelemetria
+*/
+public class PainelTelemetria {
     public static void main(String[] args) {
-        ServicoBackup servico = new ServicoBackup();
-        Thread threadBackup = new Thread(servico);
+        Thread sensorThread = new Thread(() -> {
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    System.out.println("[Sensor] A recolher dados de temperatura (" + i + "/5)...");
+                    Thread.sleep(800);
+                }
+                System.out.println("[Sensor] Recolha finalizada.");
+            } catch (InterruptedException e) {
+                System.out.println("[Sensor] Interrompido.");
+            }
+        });
 
-        threadBackup.start();
+        sensorThread.start();
 
         try {
-            long tempoToleranciaMs = 2000;
-
-            Thread.sleep(tempoToleranciaMs);
-
-            if (threadBackup.isAlive()) {
-                System.out.println("\n[Main] Tempo limite atingido! Solicitando interrupção do backup...");
-                threadBackup.interrupt();
-            }
-
-            threadBackup.join();
-
+            System.out.println("[Interface] A iniciar painel de controlo...");
+            Thread.sleep(1500);
+            System.out.println("[Interface] O utilizador está a navegar no painel...");
+            sensorThread.join();
         } catch (InterruptedException e) {
-            System.err.println("A thread principal foi interrompida inesperadamente.");
+            System.err.println("Erro na thread principal.");
         }
-
-        System.out.println("[Main] Processo finalizado.");
+        
+        System.out.println("[Sistema] Processo de telemetria concluído.");
     }
 }

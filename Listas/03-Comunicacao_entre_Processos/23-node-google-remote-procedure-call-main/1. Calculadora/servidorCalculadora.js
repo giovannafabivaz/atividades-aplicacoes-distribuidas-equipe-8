@@ -2,9 +2,15 @@
 import grpc from '@grpc/grpc-js';
 // Importa o carregador de arquivos de especificação (.proto):
 import protoLoader from '@grpc/proto-loader';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const caminhoProto = path.join(__dirname, 'calculadora.proto');
 
 // Carrega o arquivo do contrato de forma síncrona mantendo a grafia original das variáveis:
-const definicaoPacote = protoLoader.loadSync('calculadora.proto', { keepCase: true });
+const definicaoPacote = protoLoader.loadSync(caminhoProto, { keepCase: true });
 
 // Extrai o objeto do serviço de dentro do pacote carregado:
 const protoCalculadora = grpc.loadPackageDefinition(definicaoPacote).servico_calculadora;

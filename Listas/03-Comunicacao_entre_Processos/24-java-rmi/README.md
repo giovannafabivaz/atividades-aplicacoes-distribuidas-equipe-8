@@ -14,23 +14,26 @@ javac *.java
 
 ---
 
-## Iniciar o RMI Registry:
+## Iniciar o RMI Registry (somente se ainda não estiver ativo):
 
 ```bash
-rmiregistry 1099 &
+rmiregistry 1099
 ```
 
 ---
 
-## Iniciar o Servidor:
+## Iniciar o Servidor (em outro terminal):
+Se `rmiregistry 1099` retornar `Port already in use: 1099`, o registry já está ativo. Não inicie outro; continue com o servidor e o cliente.
+
+## Iniciar o Servidor (em outro terminal):
 
 ```bash
-java Servidor &
+java Servidor
 ```
 
 ---
 
-## Iniciar o Cliente:
+## Iniciar o Cliente (em um terceiro terminal):
 
 ```bash
 java Cliente 
@@ -38,25 +41,9 @@ java Cliente
 
 ---
 
-## OBS: Matar Processo em Execução:
+## Encerrar o registry
 
-```bash
-ps -aux | grep rmiregistry
-```
-
-```text
-@wdiasmaciel ➜ /workspaces/01-java-rmi/01-cumprimento (main) $ ps -aux | grep rmiregistry
-codespa+   29495  0.0  0.7 4669876 57384 pts/0   Sl   20:13   0:00 rmiregistry 1099
-codespa+   34209  0.0  0.0   7084  2152 pts/1    S+   20:20   0:00 grep --color=auto rmiregistry
-```
-
-```bash
-kill 29495
-```
-
-```bash
-kill 34209
-```
+Para encerrar o registry iniciado no terminal, pressione `Ctrl+C` nesse terminal.
 ---
 
 # Exercício

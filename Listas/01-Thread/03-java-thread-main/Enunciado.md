@@ -1,14 +1,23 @@
 # 03-java-thread
 
-## Compilação:
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
 ```bash
-javac *.java
+java -version
+javac -version
 ```
 
-## Execução:
+No terminal, a partir da raiz do repositório, compile e execute:
+
 ```bash
+cd Listas/01-Thread/03-java-thread-main
+javac *.java
 java Main
 ```
+
+O `Main` inicia os três downloads em paralelo e interrompe os que ainda estiverem ativos após o tempo limite.
 
 # Exercícios:
 
@@ -48,4 +57,3 @@ Ao rodar o programa com a tolerância de 5 segundos, você deverá observar que:
 1. O Arquivo_Pequeno e o Arquivo_Medio devem terminar com SUCESSO (pois precisam de 2s e 4s, respectivamente).
 
 2. O Arquivo_Grande deve ser interrompido no meio do caminho pela main (por volta da etapa 5 ou 6), disparando o alerta CRÍTICO.
-

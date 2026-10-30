@@ -2,13 +2,25 @@
 
  ![Cálculo das Posições do Vetor de Threads.](CálculoDasPosiçõesDoVetorDeThreads.png)
 
-```bash
-javac *.java
-```
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
 
 ```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile e execute:
+
+```bash
+cd Listas/01-Thread/06-java-thread-main
+javac *.java
 java Main
 ```
+
+O `Main` executa os testes de consumidor e produtor definidos no código.
+
 ---
 
 # Exercícios
@@ -108,6 +120,5 @@ Terefa 2 (MÉDIA) realizada com sucesso.
 
 Resumo: 2 ALTA, 3 MÉDIA, 3 BAIXA
 ```
-
 
 

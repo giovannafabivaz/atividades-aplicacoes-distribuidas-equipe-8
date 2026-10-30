@@ -1,5 +1,36 @@
 # 09-java-thread
 
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
+```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile os exercícios:
+
+```bash
+cd Listas/01-Thread/09-java-thread-main
+javac *.java
+```
+
+Cada exercício possui sua própria classe principal. Execute um por vez, usando o comando correspondente:
+
+```bash
+java Ex1_TentativaImediata
+java Ex2_TimeoutConfiguravel
+java Ex3_LiberacaoGarantida
+java Ex4_ContaBancaria
+java Ex5_UrnaEletronica
+java Ex6_Cinema
+java Ex7_GeradorIdentificador
+java Ex8_GerenciadorLog
+java Ex9_JogoDeDados
+```
+
+Para testar outro exercício, encerre o programa atual e execute o comando da classe desejada. Alguns exercícios aguardam valores digitados no terminal.
 
 # tryLock()
 

@@ -1,13 +1,28 @@
 # 02-java-thread
 
-## Compilação:
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
 ```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile os arquivos:
+
+```bash
+cd Listas/01-Thread/02-java-thread-main
 javac *.java
 ```
-## Execução:
+
+Esta pasta ainda não contém uma classe com método `main`. Para executar os cenários, implemente a classe principal solicitada em cada exercício (por exemplo, `Main.java`), compile novamente e execute a classe principal:
+
 ```bash
 java Main
 ```
+
+Os cenários de cancelamento e sucesso do backup são testados alterando o tempo de espera da thread principal conforme descrito no exercício.
 
 
 # Exercícios:
@@ -38,4 +53,3 @@ Modifique o tempo que a thread main espera no método Thread.sleep(...) para tes
 Cenário A (Cancelamento): faça a main esperar apenas 2 segundos (2000 ms) antes de chamar o .interrupt(). O programa deve parar no meio (provavelmente no passo 2 ou 3) e acionar a mensagem de erro crítico.
 
 Cenário B (Sucesso): altere a main para esperar 7 segundos (7000 ms) antes de disparar o .interrupt(). Como 7 segundos é tempo suficiente para o backup rodar os seus 5 segundos totais, a tarefa deve terminar com sucesso antes mesmo de a main tentar interrompê-la.
-

@@ -1,5 +1,24 @@
 # 07-java-thread
 
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
+```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile e execute:
+
+```bash
+cd Listas/01-Thread/07-java-thread-main
+javac *.java
+java Main
+```
+
+O programa executa exemplos de exclusão mútua para conta bancária, urna, cinema, geração de IDs e gravação de logs.
+
 # Mutex
 
 Mutex (abreviação de Mutual Exclusion ou Exclusão Mútua) é um mecanismo de sincronização usado para evitar que múltiplas threads ou processos acessem o mesmo recurso compartilhado ao mesmo tempo. 
@@ -36,16 +55,6 @@ Imagine duas threads tentando sacar R$ 70 da mesma conta corrente (saldo de R$ 1
 - Sem Seção Crítica Protegida: ambas leem o saldo como R$ 100, ambas aprovam o saque e o saldo final vira R$ -40 (um prejuízo para o banco, pois R$ 140 foram retirados).
 
 - Com Seção Crítica Protegida: a primeira thread tranca a conta, lê o saldo, faz o saque e atualiza para R$ 30. Só então a segunda thread entra, vê o saldo como R$ 30 e o saque é negado.
-
-# Comandos
-
-```bash
-javac *.java
-```
-
-```bash
-java Main
-```
 
 ---
 

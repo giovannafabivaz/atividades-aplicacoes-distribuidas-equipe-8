@@ -1,20 +1,29 @@
 # 08-java-thread
 
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
+```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile e execute:
+
+```bash
+cd Listas/01-Thread/08-java-thread-main
+javac *.java
+java Main
+```
+
+O programa demonstra o uso de semáforos no estacionamento e nos demais cenários descritos nesta atividade.
+
 # Semáforo
 
 Implementação de um Semáforo em Java.
 
 Neste exemplo, é criado um estacionamento que possui apenas 3 vagas disponíveis e 8 threads (carros) tentam estacionar ao mesmo tempo.
-
-# Comandos
-
-```bash
-javac *.java
-```
-
-```bash
-java Main
-```
 
 # Exercício
 

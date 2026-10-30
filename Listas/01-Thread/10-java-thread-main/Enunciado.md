@@ -1,5 +1,33 @@
 # Enunciado Exercícios aula 10: Synchronized
 
+## Como compilar e executar
+
+É necessário ter o JDK instalado. Confira se os comandos `java` e `javac` estão disponíveis:
+
+```bash
+java -version
+javac -version
+```
+
+No terminal, a partir da raiz do repositório, compile os exercícios:
+
+```bash
+cd Listas/01-Thread/10-java-thread-main
+javac *.java
+```
+
+Cada exercício possui sua própria classe principal. Execute um por vez:
+
+```bash
+java Ex1_Bilheteria
+java Ex2_PerfilUsuario
+java Ex3_CaixaRegistradora
+java Ex4_GerenciadorDownloads
+java Ex5_PainelAeroporto
+```
+
+Para testar outro exercício, encerre o programa atual e execute o comando da classe correspondente.
+
 ## 1. Sistema de Vendas de Ingressos (Synchronized em Método)
 
 Uma plataforma de eventos está vendendo ingressos para um *show* internacional de grande procura. Existe um número limitado de ingressos em estoque. Se o método de compra não for totalmente protegido, duas pessoas podem clicar no botão de compra ao mesmo tempo e o sistema venderá mais ingressos do que a capacidade do estádio suporta.

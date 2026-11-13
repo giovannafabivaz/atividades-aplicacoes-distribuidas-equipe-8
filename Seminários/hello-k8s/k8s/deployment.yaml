@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+spec:
+  replicas: 3                     # estado desejado
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: hello-k8s:1.0
+          imagePullPolicy: IfNotPresent   # usa a imagem carregada no minikube
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
